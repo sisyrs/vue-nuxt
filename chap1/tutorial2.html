@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample Vue App</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+  .am {
+    font-size:16pt;
+    color: darkred;
+    font-weight: bold;
+    background-color: rgb(252, 212, 217);
+  }
+  .pm {
+    font-size:16pt;
+    color: rgb(8, 66, 8);
+    font-weight: bold;
+    background-color: rgb(218, 250, 218);
+  }
+  </style>
+</head>
+<body>
+  <h1>Vue2-7</h1>
+  <div id="app">
+    <p v-if="amflag" class="am">{{ ammessage }}</p>
+    <p v-else class="pm">{{ pmmessage }}</p>
+    <br>
+    <table border="1">
+      <tr><td>&nbsp;</td><td>Menu</td><td>Price</td></tr>
+      <tr v-for="(item, id) in items"><td>{{id+1}}</td><td>{{item.name}}</td><td>{{item.price}}</td></tr>
+    </table>
+  </div>
+  <hr>
+  <button onclick="callAction(0);">Morning Menu</button>
+  <button onclick="callAction(1);">Grand Menu</button>
+
+<script>
+var data = {
+  ammessage : "Good morning! ",
+  pmmessage : "Good afternoon! ",
+  items : "",
+  menu : [
+          [{name : 'coffee', price : '200'},
+           {name : 'tea', price : '200'},
+           {name : 'orange juice', price : '300'}
+           ],
+          [{name : 'coffee au rait', price : '300'},
+           {name : 'tapioca tea', price : '400'},
+           {name : 'banana juice', price : '300'}
+           ]
+         ],
+  amflag: false
+}
+
+var app = new Vue({
+  el: '#app',
+  data: data
+})
+
+function callAction(val) {
+  data.amflag = (val===0) ? true : false;
+  data.items = data.menu[val];
+  //data.message = "Smile ";
+}
+</script>
+</body>
+</html>

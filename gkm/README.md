@@ -1,4 +1,4 @@
-# gkm v1.0.3
+# gkm v1.0.4
 
 > My legendary Nuxt.js project
 
